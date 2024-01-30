@@ -57,7 +57,7 @@ module.exports = {
         price: 299
       },
       {
-        ownerId: 4,
+        ownerId: 2,
         address: '9 Canyon Street',
         city: 'Basil City',
         state: 'Florida',
