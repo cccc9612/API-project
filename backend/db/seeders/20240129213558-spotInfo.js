@@ -22,15 +22,15 @@ module.exports = {
     await Spot.bulkCreate([
       {
         ownerId: 1,
-        address: '1 apple st.',
-        city: 'Good Town',
-        state: 'Arizona',
+        address: '321 Pike St.',
+        city: 'Seattle',
+        state: 'Washington',
         country: 'USA',
         lat: -85,
         lng: 122,
-        name: "Funny Garden",
+        name: "Pike Place Market",
         description: "2020 Top 100 Spot",
-        price: 299
+        price: 40
       },
       {
         ownerId: 2,
