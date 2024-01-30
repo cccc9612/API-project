@@ -3,7 +3,7 @@
 const { User } = require('../models');
 const bcrypt = require("bcryptjs");
 
-let options = {};
+let options = { tableName: Users };
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;
 }
