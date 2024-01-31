@@ -12,34 +12,22 @@ const router = express.Router();
 
 //get all of the current user's bookings - URL: /api/bookings/current
 router.get('/current', requireAuth, async (req, res) => {
-    const { user } = req;
-    let bookings = await Booking.findAll({
-        where: { userId: user.id }
+    const userId = req.user.id;
+    const bookings = await Booking.findAll({
+        where: { userId: userId },
+        include: [
+            {
+                model: Spot,
+                as: 'Spot',
+                attributes: ['id', 'name', 'address', 'city', 'state', 'country', 'price', 'previewImage']
+            }
+        ]
     });
 
-    const bookingsWithSpotInfo = await Promise.all(bookings.map(async (booking) => {
-        let spot = await Spot.findOne({
-            attributes: { exclude: ['createdAt', 'updatedAt', 'description'] },
-            where: { id: booking.spotId }
-        });
 
-        const previewImage = await SpotImage.findOne({
-            attributes: ['url'],
-            where: { spotId: booking.spotId, preview: true }
-        });
 
-        spot = spot.toJSON();
-        spot.previewImage = previewImage ? previewImage.url : null;
-
-        booking = booking.toJSON();
-        booking.Spot = spot;
-        delete booking.userId;
-
-        return booking;
-    }));
-
-    return res.json({ Bookings: bookingsWithSpotInfo });
-});
+    return res.status(200).json
+})
 
 
 
