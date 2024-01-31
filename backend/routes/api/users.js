@@ -47,8 +47,8 @@ router.post('/', validateSignup, async (req, res) => {
     return res.json({
         user: safeUser
     });
-}
-);
+
+});
 
 
 // router.post('/', async (req, res) => {
