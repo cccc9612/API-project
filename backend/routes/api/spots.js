@@ -1,7 +1,7 @@
 const express = require('express');
 
 // const bcrypt = require('bcryptjs');
-// const { Op } = require('sequelize');
+const { Op } = require('sequelize');
 
 const { requireAuth } = require("../../utils/auth")
 const { Spot, SpotImage, User, Review, Booking, ReviewImage } = require('../../db/models');
@@ -54,6 +54,19 @@ const validateSpot = [
     handleValidationErrors
 ];
 
+//review validation
+const validateReview = [
+    check('review')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Review text is required"),
+    check('stars')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .isFloat({ min: 1, max: 5 })
+        .withMessage("Stars must be an integer from 1 to 5"),
+    handleValidationErrors
+];
 
 //get all spots owned by the current user - URL: /api/spots/current
 router.get('/current', requireAuth, async (req, res) => {
@@ -127,6 +140,35 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 })
 
 
+
+//get all reviews by a spot's id - URL: /api/spots/:spotId/reviews
+router.get('/:spotId/reviews', async (req, res, next) => {
+    const { spotId } = req.params;
+
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) {
+        return res.status(404).json({ message: "Spot couldn't be found" })
+    }
+
+    const reviews = await Review.findAll({
+        where: { spotId },
+        include: [{
+            model: User,
+            attributes: ['id', 'firstName', 'lastName']
+        },
+        {
+            model: ReviewImage,
+            attributes: ['id', 'url']
+        }],
+        order: [[ReviewImage, 'id']]
+    })
+
+    return res.status(200).json({ Reviews: reviews });
+});
+
+
+
 // get details of a spot from an id - URL: /api/spots/:spotId
 router.get('/:spotId', async (req, res) => {
     const { spotId } = req.params;
@@ -161,8 +203,48 @@ router.get('/:spotId', async (req, res) => {
     res.json(spot)
 })
 
+
+//create a review for a spot based on the spot's id - URL: /api/spots/:spotId/reviews
+router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res) => {
+    const { spotId } = req.params;
+    const { review, stars } = req.body;
+    const userId = req.user.id;
+
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) {
+        return res.status(404).json({ message: "Spot couldn't be found" })
+    }
+
+    const existReview = await Review.findOne({
+        where: {
+            [Op.and]: [
+                { userId: req.user.id },
+                { spotId: spotId }
+            ]
+        }
+    })
+
+    if (existReview) {
+        return res.status(500).json({ message: "User already has a review for this spot" })
+    }
+
+    const newReview = await Review.create({
+        userId: userId,
+        spotId: spot.id,
+        review,
+        stars
+    })
+
+    return res.status(201).json(newReview);
+})
+
+
+
+
+
 //create a booking from a spot based on the spot's id - URL: /api/spots/:spotId/bookings
-router.post('/:spotId/bookings', requireAuth, async (req, res, next) => {
+router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const { startDate, endDate } = req.body;
     const { spotId } = req.params;
     const { user } = req;
@@ -280,8 +362,10 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
         spot.price = price;
 
         await spot.save()
+        res.status(200).json(spot)
+    } else {
+        return res.status(403).json({ message: "Forbidden" })
     }
-    res.status(200).json(spot)
 });
 
 //delete a spot - URL: /api/spots/:spotId

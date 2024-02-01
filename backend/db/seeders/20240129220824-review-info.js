@@ -48,7 +48,7 @@ module.exports = {
         spotId: 2,
         userId: 2,
         review: "Disappointed and won't be returning.",
-        stars: 0,
+        stars: 1,
       },
     ], { validate: true })
   },
