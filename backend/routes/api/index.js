@@ -4,8 +4,8 @@ const usersRouter = require('./users.js');
 
 const spotsRouter = require('./spots.js');
 const bookingsRouter = require('./bookings.js');
-// const reviewsRouter = require('./reviews.js');
-// const spotImagesRouter = require('./spot-images.js');
+const spotImagesRouter = require('./spot-images');
+const reviewsRouter = require('./reviews.js');
 // const reviewImagesRouter = require('./review-images.js');
 
 // // GET /api/set-token-cookie
@@ -29,8 +29,8 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/spots', spotsRouter);
 router.use('/bookings', bookingsRouter);
-// router.use('/reviews', reviewsRouter);
-// router.use('/spot-images', spotImagesRouter);
+router.use('/spot-images', spotImagesRouter);
+router.use('/reviews', reviewsRouter);
 // router.use('/review-images', reviewImagesRouter);
 
 
