@@ -172,29 +172,28 @@ router.get('/:spotId/reviews', async (req, res, next) => {
 // get details of a spot from an id - URL: /api/spots/:spotId
 router.get('/:spotId', async (req, res) => {
     const { spotId } = req.params;
-    let spot = await Spot.findByPk(spotId);
+    let spot = await Spot.findByPk(spotId, {
+        include: {
+            model: SpotImage,
+            attributes: {
+                exclude: ['createdAt', 'updatedAt', 'spotId']
+            }
+        }
+    });
 
     if (!spot) {
         res.status(404).json({ message: "Spot couldn't be found" });
     }
 
-    const numReviews = await Review.count({
-        where: { spotId }
-    });
-
     const totalRating = await Review.sum('stars', {
         where: { spotId }
     });
 
-    const avgRating = totalRating / numReviews;
-
     spot = spot.toJSON();
-    spot.numReviews = numReviews;
-    spot.avgRating = avgRating;
-    spot.spotImage = await SpotImage.findAll({
-        attributes: ['id', 'url', 'preview'],
-        where: { spotId, preview: true }
+    spot.numReviews = await Review.count({
+        where: { spotId }
     });
+    spot.avgRating = totalRating / numReviews;
     spot.Owner = await User.findByPk(spot.ownerId, {
         attributes: {
             exclude: ['username']
