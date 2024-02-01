@@ -19,4 +19,20 @@ ReviewImage: belongsTo Review
 
 SpotImage: belongsTo Spot
 
+
+
+
+fetch('/api/spots/1/images', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": "MzNyMBUw-HBLUYBOjzzhnTCUxaHWDIgcE1lI"
+  },
+  body: JSON.stringify({
+  "url": "image url",
+  "preview": true
+})
+}).then(res => res.json()).then(data => console.log(data));
+
+
 */
