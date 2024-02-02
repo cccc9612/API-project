@@ -66,30 +66,42 @@ router.get('/current', requireAuth, async (req, res) => {
 
 //add an image to a review based o the review's id - URL: /api/reviews/:reviewId/images
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
-    const { reviewId } = req.params;
     const { url } = req.body;
-
-    const review = await Review.findByPk(reviewId);
+    const { user } = req;
+    const { reviewId } = req.params;
+    let review = await Review.findByPk(reviewId);
 
     if (!review) {
-        return res.status(404).json({ message: "Review couldn't be found" })
+        return res.status(404).json({
+            message: `Review couldn't be found`
+        })
     }
 
-    const allImages = await ReviewImage.findAll({
-        where: { reviewId }
-    })
+    if (user.id === review.userId) {
+        const reviewImages = await ReviewImage.count({
+            where: { reviewId }
+        })
 
-    if (allImages.length >= 10) {
-        return res.status(403).json({ message: "Maximum number of images for this resource was reached" })
+        if (reviewImages >= 10) {
+            return res.status(403).json({
+                message: `Maximum number of images for this resource was reached`
+            })
+        }
+
+        const image = await review.createReviewImage({
+            url
+        })
+
+        return res.json({
+            id: image.id,
+            url
+        })
+    } else {
+        return res.status(403).json({
+            message: "Forbidden"
+        })
     }
-
-    const newImage = await review.createReviewImage({ url })
-    res.status(200).json({
-        id: newImage.id,
-        url: newImage.url
-    })
-
-});
+})
 
 //edit a review - URL: /api/reviews/:reviewId
 router.put('/:reviewId', requireAuth, validateReview, async (req, res, next) => {

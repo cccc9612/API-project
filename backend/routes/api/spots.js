@@ -423,13 +423,15 @@ router.get('/', async (req, res) => {
     if (minLat) {
         if (minLat < -90 || minLat > 90) errors.minLat = "Minimum latitude is invalid"
     }
-    if (minLng) {
-        if (minLng < -180 || minLng > 180) errors.minLng = "Minimum longitude is invalid"
-    }
 
     if (maxLat) {
         if (maxLat < -90 || maxLat > 90) errors.maxLat = "Maximum latitude is invalid"
     }
+
+    if (minLng) {
+        if (minLng < -180 || minLng > 180) errors.minLng = "Minimum longitude is invalid"
+    }
+
     if (maxLng) {
         if (maxLng < -180 || maxLng > 180) errors.maxLng = "Maximum longitude is invalid"
     }
@@ -437,6 +439,7 @@ router.get('/', async (req, res) => {
     if (minPrice) {
         if (minPrice < 0) errors.minPrice = "Minimum price must be greater or equal to 0"
     }
+
     if (maxPrice) {
         if (maxPrice < 0) errors.maxPrice = "Minimum price must be greater or equal to 0"
     }
@@ -476,7 +479,7 @@ router.get('/', async (req, res) => {
         offset: size * (page - 1)
     })
 
-    let returnArr = []
+    let arr = []
 
     for (let i = 0; i < spots.length; i++) {
         let spot = spots[i]
@@ -500,10 +503,10 @@ router.get('/', async (req, res) => {
         spot.avgRating = avgRating ? avgRating : null
         spot.previewImage = previewImage ? previewImage.url : null
 
-        returnArr.push(spot);
+        arr.push(spot);
     }
 
-    return res.status(200).json({ Spots: returnArr, page, size })
+    return res.json({ Spots: arr, page, size })
 });
 
 
