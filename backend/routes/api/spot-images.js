@@ -6,21 +6,21 @@ const router = express.Router();
 
 //delete a spot image - URL: /api/spot-images/:imageId
 router.delete('/:imageId', requireAuth, async (req, res) => {
-    const user = req.user.id;
+    const { user } = req;
     const spotImage = await SpotImage.findByPk(req.params.imageId, {
-        include: {
-            model: Spot,
-            attributes: ['ownerId']
-        }
+        include: { model: Spot, attributes: ['ownerId'] }
     });
 
     if (!spotImage) {
-        return res.status(404).json({ message: "Spot Image couldn't be found" })
-    };
+        return res.status(404).json({ message: `Spot Image couldn't be found` })
+    }
 
-    if (user === spotImage.Spot.ownerId) {
+    if (user.id === spotImage.Spot.ownerId) {
         await spotImage.destroy();
+
         return res.json({ "message": "Successfully deleted" })
+    } else {
+        return res.status(403).json({ message: "Forbidden" })
     }
 })
 
