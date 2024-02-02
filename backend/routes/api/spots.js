@@ -215,63 +215,66 @@ router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res) =>
 //create a booking from a spot based on the spot's id - URL: /api/spots/:spotId/bookings
 router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const { startDate, endDate } = req.body;
-    const { spotId } = req.params;
     const { user } = req;
-    const spot = await Spot.findByPk(spotId);
+    const { spotId } = req.params;
+    let spot = await Spot.findByPk(spotId)
 
     if (!spot) {
-        return res.status(404).json({ message: "Spot couldn't be found" })
+        return res.status(404).json({
+            message: "Spot couldn't be found"
+        })
     }
 
-    let startDateInput = new Date(startDate).toDateString();
-    let endDateInput = new Date(endDate).toDateString();
-    let startDateTime = new Date(startDateInput).getTime();
-    let endDateTime = new Date(endDateInput).getTime();
+    let startDateString = new Date(startDate).toDateString()
+    let endDateString = new Date(endDate).toDateString()
+
+    let startDateTime = new Date(startDateString).getTime()
+    let endDateTime = new Date(endDateString).getTime()
 
     if (startDateTime >= endDateTime) {
         return res.status(400).json({
             message: 'Bad Request',
-            errors: {
-                startDate: "startDate cannot be in the past",
-                endDate: "endDate cannot be on or before startDate"
-            }
+            errors: { endDate: 'endDate cannot be on or before startDate' }
         })
-    };
+    }
 
     const bookings = await Booking.findAll({
         where: { spotId: spotId }
-    });
+    })
+
+    let errors = {}
 
     for (let booking of bookings) {
-        let newStartDate = new Date(booking.startDate).toDateString();
-        let newEndDate = new Date(booking.endDate).toDateString();
-        newStartDate = new Date(newStartDate).getTime();
-        newEndDate = new Date(newEndDate).getTime();
+        let newStartDate = new Date(booking.startDate).toDateString()
+        let newEndDate = new Date(booking.endDate).toDateString()
+
+        newStartDate = new Date(newStartDate).getTime()
+        newEndDate = new Date(newEndDate).getTime()
 
         if (startDateTime >= newStartDate && startDateTime <= newEndDate) {
-            return res.status(403).json({
-                message: "Sorry, this spot is already booked for the specified dates",
-                errors: { startDate: "Start date conflicts with an existing booking" }
-            })
+            errors.startDate = "Start date conflicts with an existing booking"
         }
+
         if (endDateTime >= newStartDate && endDateTime <= newEndDate) {
-            return res.status(403).json({
-                message: "Sorry, this spot is already booked for the specified dates",
-                errors: { endDate: "End date conflicts with an existing booking" }
-            })
+            errors.endDate = "End date conflicts with an existing booking"
         }
+
         if (startDateTime < newStartDate && endDateTime > newEndDate) {
-            return res.status(403).json({
+            errors.startDate = "Start date conflicts with an existing booking"
+            errors.endDate = "End date conflicts with an existing booking"
+        }
+
+        if (Object.keys(errors).length) {
+            const err = {
                 message: "Sorry, this spot is already booked for the specified dates",
-                errors: {
-                    startDate: "Start date conflicts with an existing booking",
-                    endDate: "End date conflicts with an existing booking"
-                }
-            })
+                errors: errors
+            }
+
+            return res.status(403).json(err)
         }
     }
 
-    if (spot.ownerId !== user.id) {
+    if (user.id !== spot.ownerId) {
         const newBooking = await Booking.create({
             spotId,
             userId: user.id,
@@ -280,8 +283,10 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         })
 
         return res.status(200).json(newBooking);
+    } else {
+        return res.status(403).json({ message: "Forbidden" })
     }
-});
+})
 
 //add an image to a spot based on the spot's id - URL: /api/spots/:spotId/images
 router.post('/:spotId/images', requireAuth, async (req, res) => {
