@@ -71,43 +71,38 @@ const validateReview = [
 
 //get all spots owned by the current user - URL: /api/spots/current
 router.get('/current', requireAuth, async (req, res) => {
-    const userId = req.user.id;
-    const spots = await Spot.findAll(
-        { where: { ownerId: userId } }
-    );
+    const { user } = req;
+    let spots = await Spot.findAll({
+        where: { ownerId: user.id }
+    })
+    let arr = [];
 
-    let returnArr = await Promise.all(spots.map(async (spot) => {
+    for (let i = 0; i < spots.length; i++) {
+        let spot = spots[i]
+
         const numReviews = await Review.count({
             where: { spotId: spot.id }
-        });
+        })
 
-        const totalRating = await Review.sum('stars', {
+        const sumRating = await Review.sum('stars', {
             where: { spotId: spot.id }
-        });
+        })
 
-        const avgRating = totalRating / numReviews;
+        const avgRating = sumRating / numReviews;
 
         const previewImage = await SpotImage.findOne({
             attributes: ['url'],
-            where: { spotId: spot.id }
-        });
+            where: { spotId: spot.id, preview: true }
+        })
 
-        const formatSpot = spot.toJSON();
+        spot = spot.toJSON()
+        spot.avgRating = avgRating ? avgRating : null
+        spot.previewImage = previewImage ? previewImage.url : null
 
-        if (avgRating) {
-            formatSpot.avgRating = avgRating;
-        } else {
-            formatSpot.avgRating = null;
-        };
-        if (previewImage) {
-            formatSpot.previewImage = previewImage.url;
-        } else {
-            formatSpot.previewImage = null;
-        };
-        return formatSpot;
-    }));
+        arr.push(spot)
+    }
 
-    res.status(200).json({ Spots: returnArr })
+    return res.json({ Spots: arr })
 });
 
 //get all bookings for a spot based on the spot's id - URL: /api/spots/:spotId/bookings
@@ -225,16 +220,23 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         })
     }
 
-    let startDateString = new Date(startDate).toDateString()
+    let startDateInput = new Date(startDate).toDateString()
     let endDateString = new Date(endDate).toDateString()
 
-    let startDateTime = new Date(startDateString).getTime()
+    let startDateTime = new Date(startDateInput).getTime()
     let endDateTime = new Date(endDateString).getTime()
 
     if (startDateTime >= endDateTime) {
         return res.status(400).json({
             message: 'Bad Request',
             errors: { endDate: 'endDate cannot be on or before startDate' }
+        })
+    }
+
+    if (startDateTime <= new Date()) {
+        return res.status(400).json({
+            message: 'Bad Request',
+            errors: { endDate: 'startDate cannot be in the past' }
         })
     }
 
@@ -503,6 +505,9 @@ router.get('/', async (req, res) => {
 
     return res.status(200).json({ Spots: returnArr, page, size })
 });
+
+
+
 
 //create a spot - URL: /api/spots
 router.post('/', requireAuth, validateSpot, async (req, res) => {

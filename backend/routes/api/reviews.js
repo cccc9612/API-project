@@ -25,10 +25,9 @@ const validateReview = [
 
 //get all reviews of the current user - URL: /api/reviews/current
 router.get('/current', requireAuth, async (req, res) => {
-    const userId = req.user.id
-    const returnArr = [];
-    const reviews = await Review.findAll({
-        where: { userId: userId, },
+    const { user } = req;
+    let reviews = await Review.findAll({
+        where: { userId: user.id },
         include: [
             {
                 model: User,
@@ -41,31 +40,28 @@ router.get('/current', requireAuth, async (req, res) => {
             {
                 model: ReviewImage,
                 attributes: ['id', 'url']
-            }],
+            }
+        ],
         order: [[ReviewImage, 'id']]
     })
+    let arr = [];
 
     for (let i = 0; i < reviews.length; i++) {
-        let review = reviews[i];
+        let review = reviews[i]
 
-        const previewImage = await SpotImage.findOne({
-            where: {
-                spotId: review.spotId
-            }
+        const previewImage = await SpotImage.findByPk(review.Spot.id, {
+            attributes: ['url'],
+            where: { preview: true }
         })
+
         review = review.toJSON();
+        review.Spot.previewImage = previewImage ? previewImage.url : null
 
-        if (previewImage) {
-            review.Spot.previewImage = previewImage.url;
-        } else {
-            review.Spot.previewImage = null;
-        }
-
-        returnArr.push(review);
+        arr.push(review)
     }
-    return res.status(200).json({ Reviews: returnArr });
 
-});
+    return res.json({ Reviews: arr })
+})
 
 
 //add an image to a review based o the review's id - URL: /api/reviews/:reviewId/images
