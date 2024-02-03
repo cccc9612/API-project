@@ -469,8 +469,8 @@ router.get('/', async (req, res) => {
     if (maxLng && !minLng) where.lng = { [Op.lte]: maxLng }
     if (minLng && maxLng) where.lng = { [Op.between]: [minLng, maxLng] }
 
-    if (minPrice && !maxPrice) where.minPrice = minPrice
-    if (maxPrice && !minPrice) where.maxPrice = maxPrice
+    if (minPrice && !maxPrice) where.price = { [Op.gte]: minPrice }
+    if (maxPrice && !minPrice) where.price = { [Op.lte]: maxPrice }
     if (minPrice && maxPrice) where.price = { [Op.between]: [minPrice, maxPrice] }
 
     const spots = await Spot.findAll({
@@ -508,30 +508,5 @@ router.get('/', async (req, res) => {
 
     return res.json({ Spots: arr, page, size })
 });
-
-
-
-
-//create a spot - URL: /api/spots
-router.post('/', requireAuth, validateSpot, async (req, res) => {
-    const { address, city, state, country, lat, lng, name, description, price } = req.body;
-    const user = req.user.id;
-
-    const spot = await Spot.create({
-        ownerId: user,
-        address,
-        city,
-        state,
-        country,
-        lat,
-        lng,
-        name,
-        description,
-        price
-    })
-
-    return res.status(201).json(spot);
-});
-
 
 module.exports = router;
