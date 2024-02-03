@@ -509,4 +509,26 @@ router.get('/', async (req, res) => {
     return res.json({ Spots: arr, page, size })
 });
 
+// create a spot - URL: /api/spots
+router.post('/', requireAuth, validateSpot, async (req, res) => {
+    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+    const { user } = req;
+
+    const newSpot = await Spot.create({
+        ownerId: user.id,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    })
+
+    return res.status(201).json(newSpot)
+})
+
+
 module.exports = router;
