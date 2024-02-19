@@ -33,23 +33,39 @@ module.exports = {
         endDate: new Date('2024-04-25T10:00:00Z'),
       },
       {
+        spotId: 1,
+        userId: 2,
+        startDate: new Date('2024-03-20T14:00:00Z'),
+        endDate: new Date('2024-03-22T10:00:00Z'),
+      },
+
+      {
         spotId: 3,
         userId: 3,
-        startDate: new Date('2024-06-10T08:00:00Z'),
-        endDate: new Date('2024-06-15T12:00:00Z'),
+        startDate: new Date('2024-03-25T09:00:00Z'),
+        endDate: new Date('2024-03-27T09:00:00Z'),
       },
+
+      {
+        spotId: 2,
+        userId: 4,
+        startDate: new Date('2024-04-01T12:00:00Z'),
+        endDate: new Date('2024-04-03T12:00:00Z'),
+      },
+
       {
         spotId: 4,
-        userId: 1,
-        startDate: new Date('2024-08-01T16:00:00Z'),
-        endDate: new Date('2024-08-03T10:00:00Z'),
+        userId: 5,
+        startDate: new Date('2024-04-05T15:00:00Z'),
+        endDate: new Date('2024-04-07T10:00:00Z'),
       },
+
       {
         spotId: 5,
-        userId: 3,
-        startDate: new Date('2024-09-05T09:00:00Z'),
-        endDate: new Date('2024-09-07T18:00:00Z'),
-      },
+        userId: 6,
+        startDate: new Date('2024-04-10T10:00:00Z'),
+        endDate: new Date('2024-04-12T16:00:00Z'),
+      }
     ], { validate: true })
   },
 

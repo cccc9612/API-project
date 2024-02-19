@@ -1,0 +1,8 @@
+.modal-buttons {
+    padding: 5px 10px;
+    border: 1px solid black;
+    box-shadow: 3px 3px 2px black;
+    background-color: #BCAFD4;
+    color: white;
+    cursor: pointer;
+}

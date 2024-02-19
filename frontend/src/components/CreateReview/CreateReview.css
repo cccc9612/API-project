@@ -1,0 +1,46 @@
+.post-review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.post-review-h2 {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+.post-review-text-box {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 300px;
+    height: 100px;
+}
+
+.star-rating-div {
+    padding: 12px 0px;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+.fas.fa-star {
+    cursor: pointer;
+}
+
+.create-review-button {
+    width: 300px;
+    padding: 12px 0px;
+    border: 1px solid black;
+    box-shadow: 3px 3px 2px black;
+    background-color: #BCAFD4;
+    color: white;
+    cursor: pointer;
+}
+
+.create-review-button:disabled {
+    border: 1px solid grey;
+    box-shadow: 3px 3px 2px grey;
+    background-color: white;
+    color: grey;
+}

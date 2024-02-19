@@ -18,6 +18,10 @@ if (import.meta.env.MODE !== "production") {
   window.sessionActions = sessionActions;
 }
 
+if (process.env.NODE_ENV !== 'production') {
+  window.store = store;
+}
+
 // const Carrot = () => (
 //   <div style={{ color: "orange", fontSize: "100px" }}>
 //     <i className="fas fa-carrot"></i>

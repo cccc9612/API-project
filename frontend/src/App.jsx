@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import LoginFormPage from './components/LoginFormPage';
-// import SignupFormPage from './components/SignupFormPage';
-import Navigation from './components/Navigation/Navigation-bonus';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import Navigation from './components/Navigation/Navigation';
 import * as sessionActions from './store/session';
-import { Modal } from './context/Modal';
+import AllSpots from './components/AllSpots/AllSpots';
+import CurrentSpots from './components/CurrentSpot/CurrentSpot';
+import SpotDetails from './components/SpotDetails/SpotDetails';
+import CreateSpot from './components/CreateSpot/CreateSpot';
+import UpdateSpot from './components/UpdateSpot/UpdateSpot';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -19,7 +21,6 @@ function Layout() {
 
   return (
     <>
-      <Modal/>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && <Outlet />}
     </>
@@ -32,16 +33,28 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1>Welcome!</h1>
+        element: <AllSpots />
       },
-      // {
-      //   path: 'login',
-      //   element: <LoginFormPage />
-      // },
-      // {
-      //   path: 'signup',
-      //   element: <SignupFormPage />
-      // }
+      {
+        path: '/spots/current',
+        element: <CurrentSpots />
+      },
+      {
+        path: '/spots/:spotId',
+        element: <SpotDetails />
+      },
+      {
+        path: '/spots/new',
+        element: <CreateSpot />
+      },
+      {
+        path: '/spots/:spotId/edit',
+        element: <UpdateSpot />
+      },
+      {
+        path: '*',
+        element: <h2>Page Not Found</h2>
+      }
     ]
   }
 ]);

@@ -1,7 +1,137 @@
+body {
+  padding-top: 70px;
+}
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid lightgray;
+  background-color: white;
+  z-index: 1;
+}
+
+.home-link {
+  text-decoration: none;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+}
+
+.page-title {
+  font-family: sans-serif;
+  color: #BCAFD4;
+  padding-left: 5px;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.create-link {
+  text-decoration: none;
+  padding-right: 15px;
+  font-size: larger;
+  color: #a186d3;
+}
+
+.fa-bars {
+  padding-right: 10px;
+  padding-left: 5px;
+  font-size: 80%;
+}
+
+.profile-button {
+  border-radius: 30px;
+  border-width: thin;
+  border: 1px solid black;
+  padding: 8px 10px;
+  font-size: 20px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 .profile-dropdown {
   position: absolute;
+  right: 15px;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid black;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 2px 5px;
+}
+
+.user-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-menu-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px;
+}
+
+.user-name {
+  padding-bottom: 5px;
+}
+
+.user-menu-divide {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 5px 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.manage-spots-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: medium;
+}
+
+.user-menu-logout {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0px;
+}
+
+.logout-button {
+  border-radius: 30px;
+  padding: 5px 12px;
+  border: 1px solid black;
+  background-color: #BCAFD4;
+  color: white;
+  cursor: pointer;
 }
 
 .hidden {
-  display: none;
+  display: none
 }

@@ -1,34 +1,47 @@
-import { csrfFetch } from './csrf.js';
+import { csrfFetch } from './csrf';
 
-const SET_USER = 'session/setUser';
-const REMOVE_USER = 'session/removeUser';
+const SET_USER = "session/setUser";
+const REMOVE_USER = "session/removeUser";
 
-const setUser = (user) => ({
-  type: SET_USER,
-  payload: user
-});
+// set user action creator
+const setUser = (user) => {
+  return {
+    type: SET_USER,
+    payload: user
+  };
+};
 
-const removeUser = () => ({
-  type: REMOVE_USER
-});
+// remove user action creator
+const removeUser = () => {
+  return {
+    type: REMOVE_USER
+  };
+};
 
-export const login = ({ credential, password }) => async dispatch => {
+// login thunk action
+export const login = (user) => async (dispatch) => {
+  const { credential, password } = user;
   const response = await csrfFetch("/api/session", {
     method: "POST",
-    body: JSON.stringify({ credential, password })
+    body: JSON.stringify({
+      credential,
+      password
+    })
   });
   const data = await response.json();
   dispatch(setUser(data.user));
   return response;
 };
 
-export const restoreUser = () => async dispatch => {
+// restore session user thunk action
+export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");
   const data = await response.json();
   dispatch(setUser(data.user));
   return response;
 };
 
+// sign up thunk action
 export const signup = (user) => async (dispatch) => {
   const { username, firstName, lastName, email, password } = user;
   const response = await csrfFetch("/api/users", {
@@ -46,9 +59,10 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
+// logout thunk action
 export const logout = () => async (dispatch) => {
-  const response = await csrfFetch("/api/session", {
-    method: "DELETE"
+  const response = await csrfFetch('/api/session', {
+    method: 'DELETE'
   });
   dispatch(removeUser());
   return response;
@@ -56,7 +70,8 @@ export const logout = () => async (dispatch) => {
 
 const initialState = { user: null };
 
-function sessionReducer(state = initialState, action) {
+// session reducer
+const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       return { ...state, user: action.payload };

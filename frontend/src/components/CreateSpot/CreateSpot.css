@@ -1,0 +1,88 @@
+.create-spot-form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 500px;
+}
+
+.section-divider-line {
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+}
+
+.create-spot-h2 {
+    margin-bottom: 0px;
+}
+
+.create-spot-p {
+    margin-top: 8px;
+}
+
+.city-state-input {
+    display: flex;
+    flex-direction: row;
+}
+
+.label-city {
+    padding-right: 0px;
+}
+
+.city-input {
+    width: 330px;
+}
+
+.city-comma {
+    display: flex;
+    align-items: end;
+}
+
+.label-state {
+    padding-left: 10px;
+}
+
+.description-text-box {
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+}
+
+.price-input-detail {
+    display: flex;
+    flex-direction: row;
+}
+
+.dollar-sign {
+    padding-top: 6px;
+    padding-right: 5px;
+}
+
+.price-text-box {
+    width: 478px;
+}
+
+.create-spot-button {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.create-button {
+    box-shadow: 3px 3px 2px black;
+    background-color: #BCAFD4;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid black;
+}
+
+.create-button:disabled {
+    box-shadow: 3px 3px 1px grey;
+    background-color: white;
+    color: grey;
+    padding: 5px 10px;
+    border: 1px solid grey;
+}
+
+.errors {
+    color: red;
+}

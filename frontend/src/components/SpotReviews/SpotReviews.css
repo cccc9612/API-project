@@ -1,0 +1,15 @@
+.review-name {
+    margin: 0px;
+    padding-top: 15px;
+}
+
+.review-date {
+    margin: 0px;
+    padding: 5px 0px;
+    color: gray;
+}
+
+.review-comment {
+    margin: 0px;
+    padding-bottom: 15px;
+}

@@ -23,12 +23,12 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: "https://sample.com/image1.jpg",
+        url: "https://unsplash.com/photos/a-crowd-of-people-walking-around-a-public-market-center-bIzywU0lKDE?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash",
         preview: true,
       },
       {
         spotId: 2,
-        url: "https://sample.com/image2.jpg",
+        url: "https://unsplash.com/photos/high-rise-buildings-near-body-of-water-during-daytime-l4fJ6ulC8CY?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash",
         preview: false,
       },
       {

@@ -39,17 +39,35 @@ module.exports = {
         stars: 5,
       },
       {
-        spotId: 1,
-        userId: 3,
-        review: "Decent place.",
-        stars: 2,
+        spotId: 2,
+        userId: 4,
+        review: "Had a pleasant stay, everything was clean and tidy.",
+        stars: 4,
       },
       {
-        spotId: 2,
+        spotId: 4,
+        userId: 5,
+        review: "Good location, comfortable amenities.",
+        stars: 4,
+      },
+      {
+        spotId: 5,
         userId: 2,
-        review: "Disappointed and won't be returning.",
+        review: "Poor service, staff were unresponsive to complaints.",
         stars: 1,
       },
+      {
+        spotId: 6,
+        userId: 7,
+        review: "Decent spot, could use some improvement.",
+        stars: 3,
+      },
+      {
+        spotId: 7,
+        userId: 8,
+        review: "Enjoyed my stay, but noise level was a bit high.",
+        stars: 2,
+      }
     ], { validate: true })
   },
 
