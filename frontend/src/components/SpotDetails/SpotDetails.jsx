@@ -41,16 +41,16 @@ function SpotDetails() {
     return (
         <section className="spot-details-section">
             <h1>{spot.name}</h1>
-            <span className="spot-location">{spot.city}, {spot.state}, {spot.country}</span>
+            <span className="location">{spot.city}, {spot.state}, {spot.country}</span>
             <div className="image-container">
                 <div className="large-image-section">
-                    <img className="large-image" src={spot.SpotImages?.[0]?.url} alt={spot.SpotImages ? spot.SpotImages[0]?.url : null} />
+                    <img className="main-image" src={spot.SpotImage?.[0]?.url} />
                 </div>
-                <div className="small-images-section">
-                    <img className="small-images" src={spot.SpotImages?.[1]?.url} alt={spot.SpotImages ? spot.SpotImages[1]?.url : null} />
-                    <img className="small-images" src={spot.SpotImages?.[2]?.url} alt={spot.SpotImages ? spot.SpotImages[2]?.url : null} />
-                    <img className="small-images" src={spot.SpotImages?.[3]?.url} alt={spot.SpotImages ? spot.SpotImages[3]?.url : null} />
-                    <img className="small-images" src={spot.SpotImages?.[4]?.url} alt={spot.SpotImages ? spot.SpotImages[4]?.url : null} />
+                <div className="other-images">
+                    <img className="secondary-images" src={spot.SpotImage?.[1]?.url} />
+                    <img className="secondary-images" src={spot.SpotImage?.[2]?.url} />
+                    <img className="secondary-images" src={spot.SpotImage?.[3]?.url} />
+                    <img className="secondary-images" src={spot.SpotImage?.[4]?.url} />
                 </div>
             </div>
             <div className="middle-section">
@@ -58,12 +58,12 @@ function SpotDetails() {
                     <h1 className="host-name">Hosted by {spot.Owner?.firstName} {spot.Owner?.lastName}</h1>
                     <p>{spot.description}</p>
                 </div>
-                <div className="reserve-box">
+                <div className="reserve-container">
                     <div className="reserve-box-info">
-                        <div className="reserve-box-left">
+                        <div className="box-leftside">
                             <p className="spot-price"><span className='spot-price-number' style={{ fontWeight: 'bold', fontSize: 'x-large' }}>{`$${Number(spot.price).toFixed(2)}`}</span>night</p>
                         </div>
-                        <div className="reserve-box-right">
+                        <div className="box-rightside">
                             <i className="fas fa-star rating"></i>
                             <span className="reserve-box-rating">{` ${ratings()}`}</span>
                         </div>

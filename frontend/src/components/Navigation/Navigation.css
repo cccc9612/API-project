@@ -16,10 +16,6 @@ body {
   z-index: 1;
 }
 
-.home-link {
-  text-decoration: none;
-}
-
 .header-left {
   display: flex;
   flex-direction: row;
@@ -32,8 +28,9 @@ body {
 }
 
 .page-title {
-  font-family: sans-serif;
-  color: #BCAFD4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #121b68;
   padding-left: 5px;
 }
 
@@ -44,11 +41,11 @@ body {
   padding-right: 5px;
 }
 
-.create-link {
-  text-decoration: none;
-  padding-right: 15px;
-  font-size: larger;
-  color: #a186d3;
+.create-new-spot {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-right: 20px;
+  font-weight: bold;
+  color: #025e5f;
 }
 
 .fa-bars {

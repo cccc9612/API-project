@@ -1,11 +1,11 @@
-.post-review-form {
+.review-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 5px;
 }
 
-.post-review-h2 {
+.review-header {
     margin: 0px;
     padding-bottom: 10px;
 }

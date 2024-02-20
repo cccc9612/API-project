@@ -16,16 +16,13 @@ function CreateReview({ spotId }) {
     const sessionUser = useSelector((state) => state.session.user)
 
     useEffect(() => {
-        // const errorsArr = []
         const validationsObj = {}
 
         if (String(review).length < 10) {
-            // errorsArr.push('Review needs a minimum of 10 characters')
             validationsObj.review = 'Review needs a minimum of 10 characters'
         }
 
         if (!stars) {
-            // errorsArr.push('Star rating must be filled')
             validationsObj.stars = 'Star rating must be filled'
         }
 
@@ -51,8 +48,8 @@ function CreateReview({ spotId }) {
     }
 
     return (
-        <form className='post-review-form' onSubmit={handleSubmit}>
-            <h2 className="post-review-h2">How was your stay?</h2>
+        <form className='review-form' onSubmit={handleSubmit}>
+            <h2 className="review-header">How was your stay?</h2>
             <textarea
                 className="post-review-text-box"
                 type='text'

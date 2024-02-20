@@ -22,23 +22,23 @@ module.exports = {
     await ReviewImage.bulkCreate([
       {
         reviewId: 1,
-        url: "https://example.com/image1.jpg",
+        url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708384226/wr4cc2r2onb60mapz85y.jpg",
       },
       {
         reviewId: 1,
-        url: "https://example.com/image2.jpg",
+        url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708384373/htayzxinucvrohq7m2rz.jpg",
       },
       {
         reviewId: 2,
-        url: "https://example.com/image3.jpg",
+        url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708384373/xkabmyvbvi1tc8klswjr.jpg",
       },
       {
         reviewId: 3,
-        url: "https://example.com/image4.jpg",
+        url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708384374/sycuozc8mclcygthungo.jpg",
       },
       {
         reviewId: 3,
-        url: "https://example.com/image5.jpg",
+        url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708384375/bvmfpce8lxsucqikxzq8.jpg",
       },
     ], { validate: true })
   },

@@ -6,6 +6,7 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal/LoginFormModal';
 import SignupFormModal from '../SignupFormModal/SignupFormModal';
 import './Navigation.css'
+// import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -52,8 +53,8 @@ function ProfileButton({ user }) {
   return (
     <>
       <button className='profile-button' onClick={toggleMenu}>
-        <i className="fas fa-bars" />
-        <i className="fas fa-user-circle" />
+        <i className="fa-solid fa-bars" />
+        <i className="fa-solid fa-user" />
       </button>
       <span className={ulClassName} ref={ulRef}>
         {user ? (

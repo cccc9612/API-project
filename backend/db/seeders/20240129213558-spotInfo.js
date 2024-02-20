@@ -30,7 +30,7 @@ module.exports = {
         lng: 122,
         name: "Pike Place Market",
         description: "2020 Top 100 Spot",
-        price: 40
+        price: 240
       },
       {
         ownerId: 2,
@@ -42,7 +42,7 @@ module.exports = {
         lng: -74.0060,
         name: "Central Park",
         description: "Iconic urban park",
-        price: 50
+        price: 150
       },
       {
         ownerId: 3,
@@ -54,7 +54,7 @@ module.exports = {
         lng: -118.2437,
         name: "Hollywood Walk of Fame",
         description: "Famous sidewalk featuring stars' names",
-        price: 60
+        price: 160
       },
       {
         ownerId: 4,
@@ -66,7 +66,7 @@ module.exports = {
         lng: -80.1918,
         name: "South Beach",
         description: "Trendy beachfront area",
-        price: 70
+        price: 270
       },
       {
         ownerId: 5,
@@ -78,7 +78,7 @@ module.exports = {
         lng: -87.6298,
         name: "Millennium Park",
         description: "Famous public park featuring the Cloud Gate sculpture",
-        price: 55
+        price: 155
       },
       {
         ownerId: 6,
@@ -90,7 +90,7 @@ module.exports = {
         lng: -122.4194,
         name: "Golden Gate Bridge",
         description: "Iconic suspension bridge",
-        price: 65
+        price: 365
       },
       {
         ownerId: 7,
@@ -102,7 +102,7 @@ module.exports = {
         lng: -71.0589,
         name: "Fenway Park",
         description: "Historic baseball stadium",
-        price: 75
+        price: 275
       },
       {
         ownerId: 8,
@@ -114,7 +114,7 @@ module.exports = {
         lng: -122.6750,
         name: "Portland Japanese Garden",
         description: "Tranquil garden featuring traditional Japanese landscaping",
-        price: 45
+        price: 145
       }
     ], { validate: true })
 
@@ -129,7 +129,7 @@ module.exports = {
      */
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      address: { [Op.in]: ['1 apple st.', '1551 Plain Road', '156 Diamond Blvd.', '9 Canyon Street', '57 Big Bear Avenue'] }
+      address: { [Op.in]: ['321 Pike St.', '456 Main St.', '789 Broadway Ave.', '123 Ocean Blvd.', '987 Elm St.', '246 Maple Ave.', '135 Pine St.', '369 Cedar St.'] }
     }, {})
   }
 };

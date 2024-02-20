@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
-import * as sessionActions from './store/session';
-import AllSpots from './components/AllSpots/AllSpots';
+import GetAllSpots from './components/GetAllSpots/GetAllSpots';
 import CurrentSpots from './components/CurrentSpot/CurrentSpot';
 import SpotDetails from './components/SpotDetails/SpotDetails';
 import CreateSpot from './components/CreateSpot/CreateSpot';
 import UpdateSpot from './components/UpdateSpot/UpdateSpot';
+import * as sessionActions from './store/session';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <AllSpots />
+        element: <GetAllSpots />
       },
       {
         path: '/spots/current',
