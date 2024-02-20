@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpotsThunk } from "../../store/spots"
-import './GetAllSpots.css'
 import { useNavigate } from "react-router-dom";
+import './GetAllSpots.css'
 
 function AllSpots() {
     const navigate = useNavigate()

@@ -11,7 +11,6 @@ function CreateReview({ spotId }) {
     const [review, setReview] = useState('')
     const [stars, setStars] = useState(0)
     const [hover, setHover] = useState(0)
-    // const [errors, setErrors] = useState([])
     const [validations, setValidations] = useState({})
     const sessionUser = useSelector((state) => state.session.user)
 
@@ -26,7 +25,6 @@ function CreateReview({ spotId }) {
             validationsObj.stars = 'Star rating must be filled'
         }
 
-        // setErrors(errorsArr)
         setValidations(validationsObj)
     }, [review, stars])
 
@@ -59,7 +57,7 @@ function CreateReview({ spotId }) {
                 minLength={10}
             />
             <div className="star-rating-div">
-                {[...Array(5)].map((star, index) => {
+                {[...Array(5)].map((stars, index) => {
                     const rating = index + 1
                     return (
                         <label key={rating}>

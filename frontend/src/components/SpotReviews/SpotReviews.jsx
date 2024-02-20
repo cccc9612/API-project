@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getSpotReviewsThunk } from "../../store/reviews"
 import { useParams } from "react-router-dom"
-// import DeleteReview from '../DeleteReview/DeleteReview'
+import DeleteReview from '../DeleteReview/DeleteReview'
 import OpenModalButton from "../OpenModalButton/OpenModalButton"
 import './SpotReviews.css'
 

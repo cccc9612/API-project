@@ -49,27 +49,27 @@ module.exports = {
       {
         spotId: 2,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708383760/gwf204z7tvqwg1a5aaxc.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 2,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708406281/home%20images/pe3dyeidcrzojmzfpygp.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 2,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708406281/home%20images/mndsojwcjwxamdxn5kxu.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 2,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708406282/home%20images/dtfxhwueef1alogo6qnp.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 2,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708406283/home%20images/gjcq0nfu0bicshzpfrai.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 3,
@@ -99,27 +99,27 @@ module.exports = {
       {
         spotId: 4,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708384226/gee5tskun83yvj3rlc37.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 4,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708406284/home%20images/j7mbgafcjuvmetecahw2.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 4,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708406284/home%20images/zlbuixbd6x5jicxkilrt.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 4,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708406285/home%20images/dlhvvueznzy5hbnjqdw1.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 4,
         url: "https://res.cloudinary.com/dcjacsnm3/image/upload/v1708406285/home%20images/fmbiopyldhqsivvj3vfg.jpg",
-        preview: false,
+        preview: true,
       },
       {
         spotId: 5,
