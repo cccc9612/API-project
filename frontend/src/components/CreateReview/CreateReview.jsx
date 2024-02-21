@@ -71,8 +71,7 @@ function CreateReview({ spotId }) {
                                 style={{
                                     color: rating <= (hover || stars) ? 'gold' : 'grey',
                                 }}
-                                onMouseEnter={() => setHover(rating)}
-                                onMouseLeave={() => setHover(0)}
+                                onClick={() => setHover(rating)}
                             ></i>
                         </label>
                     )

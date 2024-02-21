@@ -127,3 +127,8 @@ body {
 .reserve-box-combine {
     display: flex;
 }
+
+.post-review-button {
+    border: 1px dotted black;
+    box-shadow: 3px 3px 2px black;
+}

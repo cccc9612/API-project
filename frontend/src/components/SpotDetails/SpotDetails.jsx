@@ -74,7 +74,10 @@ function SpotDetails() {
             <div className="review-section">
                 <h1 className="rating-review-h1"><i className="fas fa-star rating">{` ${ratings()}`}</i></h1>
                 {sessionUser && sessionUser?.id !== spot?.Owner?.id && !hasUserReviewed && (
-                    <OpenModalButton buttonText={'Post Your Review'} modalComponent={<CreateReview spotId={spot.id} />} />
+                    <OpenModalButton
+                        className="post-review-button"
+                        buttonText={'Post Your Review'}
+                        modalComponent={<CreateReview spotId={spot.id} />} />
                 )}
                 {sessionUser && sessionUser?.id !== spot?.Owner?.id && reviews.length === 0 && (
                     <p>Be the first to post a review!</p>

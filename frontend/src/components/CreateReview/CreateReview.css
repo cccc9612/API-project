@@ -36,8 +36,9 @@ input[type=radio] {
     padding: 12px 0px;
     border: 2px solid rgb(114, 114, 114);
     box-shadow: 3px 3px 2px rgb(111, 111, 111);
-    background-color: #fefefe;
-    color: rgb(113, 111, 111);
+    background-color: #ff7a7a;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
     cursor: pointer;
 }
 

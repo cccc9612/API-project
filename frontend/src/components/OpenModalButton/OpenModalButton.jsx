@@ -9,13 +9,24 @@ function OpenModalButton({
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
+  const buttonStyle = {
+    border: "1px solid black",
+    boxShadow: "3px 3px 2px black",
+    backgroundColor: "#236db7",
+    color: "white",
+    borderRadius: "3px",
+    cursor: "pointer",
+    padding: "5px 10px",
+  };
+
+
   const onClick = () => {
     if (onModalClose) setOnModalClose(onModalClose);
     setModalContent(modalComponent);
     if (typeof onButtonClick === "function") onButtonClick();
   };
 
-  return <button onClick={onClick}>{buttonText}</button>;
+  return <button style={buttonStyle} onClick={onClick}>{buttonText}</button>;
 }
 
 export default OpenModalButton;
