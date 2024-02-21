@@ -10,31 +10,29 @@
     margin: 0px;
 }
 
-.delete-buttons {
-    padding: 5px 10px;
-    border: 1px solid black;
-    box-shadow: 3px 3px 2px black;
-    background-color: #a29ea9;
+.delete-section {
+    padding-bottom: 10px;
     color: white;
     cursor: pointer;
 }
 
 .yes-button {
     width: 300px;
-    padding: 12px 0px;
+    padding: 12px;
+    margin-bottom: 12px;
+    color: white;
+    background-color: #ea4242;
     border: 1px solid black;
     box-shadow: 3px 3px 2px black;
-    background-color: #f00000;
-    color: white;
     cursor: pointer;
 }
 
 .no-button {
     width: 300px;
     padding: 12px 0px;
+    color: white;
+    background-color: grey;
     border: 1px solid black;
     box-shadow: 3px 3px 2px black;
-    background-color: grey;
-    color: white;
     cursor: pointer;
 }

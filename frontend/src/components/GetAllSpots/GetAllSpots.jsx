@@ -25,7 +25,7 @@ function AllSpots() {
                             <img className='preview-image' src={spot.previewImage} alt='image' />
                             <span className="hover-box">{spot.name}</span>
                         </div>
-                        <div className="text-box">
+                        <div className="description-box">
                             <div className="leftside-text">
                                 <span>{`${spot.city}, ${spot.state}`}</span>
                                 <p className="price-box"><span style={{ fontWeight: 'bold' }}>{`$${Number(spot.price).toFixed(2)}`}</span> night</p>

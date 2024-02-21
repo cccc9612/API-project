@@ -49,14 +49,14 @@ function CreateReview({ spotId }) {
         <form className='review-form' onSubmit={handleSubmit}>
             <h2 className="review-header">How was your stay?</h2>
             <textarea
-                className="post-review-text-box"
+                className="text-box"
                 type='text'
                 value={review}
                 placeholder='Leave your review here...'
                 onChange={(e) => setReview(e.target.value)}
                 minLength={10}
             />
-            <div className="star-rating-div">
+            <div className="star-rating-section">
                 {[...Array(5)].map((stars, index) => {
                     const rating = index + 1
                     return (
@@ -69,7 +69,7 @@ function CreateReview({ spotId }) {
                             <i
                                 className="fas fa-star"
                                 style={{
-                                    color: rating <= (hover || stars) ? 'gold' : 'black',
+                                    color: rating <= (hover || stars) ? 'gold' : 'grey',
                                 }}
                                 onMouseEnter={() => setHover(rating)}
                                 onMouseLeave={() => setHover(0)}
@@ -78,7 +78,7 @@ function CreateReview({ spotId }) {
                     )
                 })} Stars
             </div>
-            <button className="create-review-button" type="submit" disabled={Object.values(validations).length}>Submit Your Review</button>
+            <button className="submit-button" type="submit" disabled={Object.values(validations).length}>Submit Your Review</button>
         </form>
     )
 }

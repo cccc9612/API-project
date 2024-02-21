@@ -1,49 +1,47 @@
-.create-spot-form {
+.form-container {
     display: flex;
     flex-direction: column;
     margin: auto;
     width: 500px;
 }
 
-.section-divider-line {
-    padding-bottom: 15px;
-    border-bottom: 1px solid black;
-}
-
-.create-spot-h2 {
+.section-header {
     margin-bottom: 0px;
 }
 
-.create-spot-p {
+.section-p {
     margin-top: 8px;
 }
 
-.city-state-input {
+.city-state {
     display: flex;
     flex-direction: row;
 }
 
-.label-city {
+.city-header {
     padding-right: 0px;
 }
 
-.city-input {
-    width: 330px;
+.state-header {
+    padding-left: 10px;
 }
 
-.city-comma {
+.city-input {
+    width: 300px;
+}
+
+
+.comma {
     display: flex;
     align-items: end;
 }
 
-.label-state {
-    padding-left: 10px;
-}
 
-.description-text-box {
+.text-box {
     height: 150px;
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px;
+    width: 500px;
 }
 
 .price-input-detail {
@@ -56,7 +54,7 @@
     padding-right: 5px;
 }
 
-.price-text-box {
+.price-section {
     width: 478px;
 }
 
@@ -66,23 +64,32 @@
     justify-content: center;
 }
 
-.create-button {
-    box-shadow: 5px 3px 2px black;
-    background-color: #BCAFD4;
-    color: white;
+.create-spot {
+    background-color: #eb5858;
+    color: rgb(255, 255, 255);
+    width: 120px;
+    font-size: 15px;
     cursor: pointer;
     padding: 5px 10px;
     border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 5px 3px 2px black;
 }
 
-.create-button:disabled {
-    box-shadow: 3px 3px 1px grey;
+.create-spot:disabled {
     background-color: white;
-    color: grey;
-    padding: 5px 10px;
     border: 1px solid grey;
+    box-shadow: 5px 3px 2px grey;
+    color: rgb(87, 83, 83);
+    padding: 5px 10px;
+}
+
+.section-divider {
+    padding-bottom: 15px;
+    border-bottom: 2px solid black;
 }
 
 .errors {
     color: red;
+    font-size: small;
 }

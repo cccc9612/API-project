@@ -36,9 +36,9 @@ function SpotReviews() {
         <section>
             {reviews.reverse().map((review) => (
                 <div key={review.id}>
-                    <h3 className="review-name">{review.User?.firstName}</h3>
-                    <p className="review-date">{month(review.createdAt)} {year(review.createdAt)}</p>
-                    <p className="review-comment">{review.review}</p>
+                    <h3 className="reviewer">{review.User?.firstName}</h3>
+                    <p className="post-date">{month(review.createdAt)} {year(review.createdAt)}</p>
+                    <p className="comments">{review.review}</p>
                     {sessionUser?.id === review.User?.id && (
                         <OpenModalButton buttonText={"Delete"} modalComponent={<DeleteReview reviewId={review.id} spotId={spotId} />} />
                     )}

@@ -59,7 +59,7 @@ function SpotDetails() {
                     <p>{spot.description}</p>
                 </div>
                 <div className="reserve-container">
-                    <div className="reserve-box-info">
+                    <div className="reserve-box-combine">
                         <div className="box-leftside">
                             <p className="spot-price"><span className='spot-price-number' style={{ fontWeight: 'bold', fontSize: 'x-large' }}>{`$${Number(spot.price).toFixed(2)}`}</span>night</p>
                         </div>

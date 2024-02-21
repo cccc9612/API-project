@@ -1,15 +1,15 @@
-.review-name {
+.reviewer {
     margin: 0px;
     padding-top: 15px;
 }
 
-.review-date {
+.post-date {
     margin: 0px;
     padding: 5px 0px;
-    color: gray;
+    color: rgb(97, 97, 97);
 }
 
-.review-comment {
+.comments {
     margin: 0px;
-    padding-bottom: 15px;
+    font-weight: bold;
 }

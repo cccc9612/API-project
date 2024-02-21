@@ -6,12 +6,12 @@
 .spots-container {
     display: flex;
     grid-template-columns: auto;
-    flex-direction: row;
     flex-wrap: wrap;
+    flex-direction: row;
+    row-gap: 15px;
+    column-gap: 20px;
     padding-top: 25px;
     max-width: 1300px;
-    column-gap: 20px;
-    row-gap: 15px;
 }
 
 .spot-preview {
@@ -19,36 +19,36 @@
 }
 
 .preview-image {
-    object-fit: cover;
     width: 300px;
     height: 300px;
-    border-radius: 5%;
+    object-fit: cover;
 }
 
 .tool-tip {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: start;
 }
 
 .hover-box {
     visibility: hidden;
     position: absolute;
     background-color: #8ac3ff;
+    align-items: center;
     color: white;
     text-align: center;
     padding: 5px;
-    border-radius: 5px;
-    bottom: 42%;
     width: 80%;
+    left: 10%;
+    bottom: 50%
 }
 
 .tool-tip:hover .hover-box {
     visibility: visible;
 }
 
-.text-box {
+.description-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

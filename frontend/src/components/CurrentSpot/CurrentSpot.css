@@ -4,24 +4,30 @@
     align-items: start;
 }
 
-.manage-title {
-    margin: 10px 0px;
-}
-
 .create-new-spot-button,
 .update-spot-button {
-    padding: 5px 10px;
     border: 1px solid black;
     box-shadow: 3px 3px 2px black;
-    background-color: #a29ea9;
+    background-color: #5c5a60;
     color: white;
+    border-radius: 3px;
     cursor: pointer;
+    padding: 5px 10px;
+
 }
 
 .manage-buttons {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 15px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 .spots-container {
@@ -43,16 +49,8 @@
     object-fit: cover;
     width: 300px;
     height: 300px;
-    border-radius: 5%;
 }
 
-.text-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 10px;
-    padding-bottom: 30px;
-}
 
 .spot-left {
     display: flex;
@@ -62,9 +60,10 @@
 .spot-prices {
     margin: 0px;
     padding-top: 5px;
+    font-weight: bold;
 }
 
-.spot-right {
+.rating-section {
     display: flex;
     justify-content: flex-end;
 }
