@@ -87,8 +87,8 @@ function UpdateSpot() {
     return (
         <>
             {sessionUser && (
-                <form onSubmit={handleSubmit} className="create-spot-form">
-                    <div className="location-input section-divider-line">
+                <form onSubmit={handleSubmit} className="form-container">
+                    <div className="location-input section-divider">
                         <h1>Update Your Spot</h1>
                         <h2 className="create-spot-h2">Where&apos;s your place located?</h2>
                         <p className="create-spot-p">Guests will only get your exact address once they booked a reservation.</p>
@@ -112,8 +112,8 @@ function UpdateSpot() {
                                 required
                             />
                         </label>
-                        <div className="city-state-input">
-                            <label className="label label-city">
+                        <div className="city-state">
+                            <label className="city-header">
                                 {<span>City <span className="errors">{errors.filter((error) => error.includes('City'))}</span></span>}
                                 <input
                                     className="city-input"
@@ -124,8 +124,8 @@ function UpdateSpot() {
                                     required
                                 />
                             </label>
-                            <span className="city-comma">, </span>
-                            <label className="label label-state">
+                            <span className="comma">, </span>
+                            <label className="state-header">
                                 {<span>State <span className="errors">{errors.filter((error) => error.includes('State'))}</span></span>}
                                 <input
                                     type='text'
@@ -137,12 +137,12 @@ function UpdateSpot() {
                             </label>
                         </div>
                     </div>
-                    <div className="description-input section-divider-line">
+                    <div className="description-input section-divider">
                         <h2 className="create-spot-h2">Describe your place to guests</h2>
                         <p className="create-spot-p">Mention the best features of your space, any special amenities like fast wifi or parking, and what you love about the neighborhood.</p>
                         <label className="label">
                             <textarea
-                                className="description-text-box"
+                                className="text-box"
                                 type='text'
                                 value={description}
                                 placeholder='Please write at least 30 characters'
@@ -152,7 +152,7 @@ function UpdateSpot() {
                             {<span className="errors">{errors.filter((error) => error.includes('Description'))}</span>}
                         </label>
                     </div>
-                    <div className="title-input section-divider-line">
+                    <div className="title-input section-divider">
                         <h2 className="create-spot-h2">Create a title for your spot</h2>
                         <p className="create-spot-p">Catch guests&apos; attention with a spot title that highlights what makes your place special.</p>
                         <label className="label">
@@ -166,14 +166,14 @@ function UpdateSpot() {
                             {<span className="errors">{errors.filter((error) => error.includes('Name'))}</span>}
                         </label>
                     </div>
-                    <div className="price-input section-divider-line">
+                    <div className="price-input section-divider">
                         <h2 className="create-spot-h2">Set a base price for your spot</h2>
                         <p className="create-spot-p">Competitive pricing can help your listing stand out and rank higher in search results.</p>
                         <div className="price-input-detail">
                             <span className="dollar-sign">$</span>
                             <label className="label">
                                 <input
-                                    className="price-text-box"
+                                    className="price-section"
                                     type='number'
                                     value={price}
                                     placeholder='Price per night (USD)'
@@ -185,7 +185,7 @@ function UpdateSpot() {
                         </div>
                     </div>
                     <div className="create-spot-button">
-                        <button className="create-button" type="submit" disabled={Object.values(validations).length}>Update Your Spot</button>
+                        <button className="create-spot" type="submit" disabled={Object.values(validations).length}>Update Your Spot</button>
                     </div>
                 </form>
             )}
