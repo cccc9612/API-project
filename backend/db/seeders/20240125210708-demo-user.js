@@ -36,11 +36,11 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('password3')
       },
       {
-        firstName: 'Louis',
-        lastName: 'Litt',
-        email: 'user4@user.io',
-        username: 'FakeUser4',
-        hashedPassword: bcrypt.hashSync('password4')
+        firstName: 'Amanda',
+        lastName: 'Johnson',
+        email: 'ajohnson@example.com',
+        username: 'mandyjohnson',
+        hashedPassword: bcrypt.hashSync('SecureP@ss')
       },
       {
         firstName: 'Donna',
@@ -51,21 +51,20 @@ module.exports = {
       },
 
       {
-        firstName: 'Rachel',
-        lastName: 'Zane',
-        email: 'user6@user.io',
-        username: 'FakeUser6',
-        hashedPassword: bcrypt.hashSync('password6')
+        firstName: 'Christopher',
+        lastName: 'Taylor',
+        email: 'chris.taylor@gmail.com',
+        username: 'ChrisTaylor1982',
+        hashedPassword: bcrypt.hashSync('TaylorMade1982')
       },
 
       {
-        firstName: 'Mike',
-        lastName: 'Ross',
-        email: 'user7@user.io',
-        username: 'FakeUser7',
-        hashedPassword: bcrypt.hashSync('password7')
+        firstName: 'Brandon',
+        lastName: 'Wong',
+        email: 'bwong@company.com',
+        username: 'brandonw',
+        hashedPassword: bcrypt.hashSync('WongIsKing!')
       },
-
       {
         firstName: 'Robert',
         lastName: 'Zane',
@@ -73,14 +72,42 @@ module.exports = {
         username: 'FakeUser8',
         hashedPassword: bcrypt.hashSync('password8')
       },
-
       {
         firstName: 'Alex',
         lastName: 'Williams',
         email: 'user9@user.io',
         username: 'FakeUser9',
         hashedPassword: bcrypt.hashSync('password9')
-      }
+      },
+      {
+        firstName: 'Sophia',
+        lastName: 'Martinez',
+        email: 'sophia.martinez@example.org',
+        username: 'sophiamtz',
+        hashedPassword: bcrypt.hashSync('Martinez@2023')
+      },
+      {
+        firstName: 'Jessica',
+        lastName: 'Brown',
+        email: 'jess_brown123@gmail.com',
+        username: 'jessbrown',
+        hashedPassword: bcrypt.hashSync('Brownie2024!')
+      },
+      {
+        firstName: 'Rachel',
+        lastName: 'Lopez',
+        email: 'rachel.lopez@example.org',
+        username: 'r_lopez',
+        hashedPassword: bcrypt.hashSync('LopezR2024!')
+      },
+      {
+        firstName: 'Jack',
+        lastName: 'Long',
+        email: 'jack.long@example.net',
+        username: 'jacklong',
+        hashedPassword: bcrypt.hashSync('LongJack123#')
+      },
+
     ], { validate: true })
   },
 
