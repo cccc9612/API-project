@@ -49,8 +49,8 @@ function CreateSpot() {
         }
 
         if (String(description).length < 30) {
-            errorsArr.push('Description needs a minimum of 30 characters')
-            validationsObj.description = 'Description needs a minimum of 30 characters'
+            errorsArr.push('Description needs 30 or more characters')
+            validationsObj.description = 'Description needs 30 or more characters'
         }
 
         if (!name) {
@@ -59,8 +59,8 @@ function CreateSpot() {
         }
 
         if (!Number(price)) {
-            errorsArr.push('Price is required')
-            validationsObj.price = 'Price is required'
+            errorsArr.push('Price per night is required')
+            validationsObj.price = 'Price per night is required'
         }
 
         if (!previewImage) {
@@ -170,7 +170,7 @@ function CreateSpot() {
                                 className="text-box"
                                 type='text'
                                 value={description}
-                                placeholder='Description needs a minimum of 30 characters'
+                                placeholder='Please write at least 30 characters'
                                 onChange={(e) => setDescription(e.target.value)}
                                 minLength={30}
                             />
