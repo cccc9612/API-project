@@ -47,8 +47,26 @@ module.exports = {
       {
         spotId: 4,
         userId: 5,
-        review: "Good location, comfortable amenities.",
-        stars: 4,
+        review: "The location was convenient, but the cleanliness could be improved.",
+        stars: 3
+      },
+      {
+        spotId: 5,
+        userId: 1,
+        review: "Had a pleasant stay, although the noise from the nearby construction was bothersome.",
+        stars: 4
+      },
+      {
+        spotId: 6,
+        userId: 4,
+        review: "Amazing place! Would definitely recommend it to others.",
+        stars: 5
+      },
+      {
+        spotId: 7,
+        userId: 6,
+        review: "Disappointing experience. The facilities were outdated and not well-maintained.",
+        stars: 2
       },
       {
         spotId: 5,
@@ -67,7 +85,8 @@ module.exports = {
         userId: 8,
         review: "Enjoyed my stay, but noise level was a bit high.",
         stars: 2,
-      }
+      },
+
     ], { validate: true })
   },
 
